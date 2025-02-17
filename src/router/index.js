@@ -3,46 +3,55 @@ import { ElLoading } from 'element-plus'
 import axios from 'axios'
 import { store, fixedData } from '../store'
 
+// 预先导入组件
+import Layout from '../views/Layout.vue'
+import Welcome from '../views/Welcome.vue'
+import Dashboard from '../views/Dashboard.vue'
+import Inventory from '../views/Inventory.vue'
+import Inbound from '../views/Inbound.vue'
+import Outbound from '../views/Outbound.vue'
+import Monitoring from '../views/Monitoring.vue'
+
 const routes = [
   {
     path: '/',
-    component: () => import(/* @vite-ignore */ '../views/Layout.vue'),
+    component: Layout,
     redirect: '/welcome',
     children: [
       {
         path: 'welcome',
         name: 'Welcome',
-        component: () => import(/* @vite-ignore */ '../views/Welcome.vue'),
+        component: Welcome,
         meta: { title: '欢迎' }
       },
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () => import(/* @vite-ignore */ '../views/Dashboard.vue'),
+        component: Dashboard,
         meta: { title: '系统概览' }
       },
       {
         path: 'inventory',
         name: 'Inventory',
-        component: () => import(/* @vite-ignore */ '../views/Inventory.vue'),
+        component: Inventory,
         meta: { title: '库存管理' }
       },
       {
         path: 'inbound',
         name: 'Inbound',
-        component: () => import(/* @vite-ignore */ '../views/Inbound.vue'),
+        component: Inbound,
         meta: { title: '入库管理' }
       },
       {
         path: 'outbound',
         name: 'Outbound',
-        component: () => import(/* @vite-ignore */ '../views/Outbound.vue'),
+        component: Outbound,
         meta: { title: '出库管理' }
       },
       {
         path: 'monitoring',
         name: 'Monitoring',
-        component: () => import(/* @vite-ignore */ '../views/Monitoring.vue'),
+        component: Monitoring,
         meta: { title: '监控系统' }
       }
     ]

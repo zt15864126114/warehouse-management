@@ -1,5 +1,7 @@
 <template>
-  <router-view v-if="isInitialized"></router-view>
+  <router-view v-if="isInitialized" v-slot="{ Component }">
+    <component :is="Component" />
+  </router-view>
   <div v-else class="loading-container">
     <el-loading :fullscreen="true" text="系统初始化中..." />
   </div>

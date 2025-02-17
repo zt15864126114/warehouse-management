@@ -11,8 +11,13 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'element-plus': ['element-plus'],
-          'echarts': ['echarts']
+          'vendor': [
+            'vue',
+            'vue-router',
+            'element-plus',
+            '@element-plus/icons-vue',
+            'echarts'
+          ]
         }
       }
     },
