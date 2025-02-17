@@ -18,7 +18,14 @@ export default defineConfig({
     },
     assetsDir: 'assets',
     chunkSizeWarningLimit: 1500,
-    cssCodeSplit: true
+    cssCodeSplit: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
   }
 }) 
  

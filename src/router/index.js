@@ -18,31 +18,31 @@ const routes = [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () => import('../views/Dashboard.vue'),
+        component: () => import(/* @vite-ignore */ '../views/Dashboard.vue'),
         meta: { title: '系统概览' }
       },
       {
         path: 'inventory',
         name: 'Inventory',
-        component: () => import('../views/Inventory.vue'),
+        component: () => import(/* @vite-ignore */ '../views/Inventory.vue'),
         meta: { title: '库存管理' }
       },
       {
         path: 'inbound',
         name: 'Inbound',
-        component: () => import('../views/Inbound.vue'),
+        component: () => import(/* @vite-ignore */ '../views/Inbound.vue'),
         meta: { title: '入库管理' }
       },
       {
         path: 'outbound',
         name: 'Outbound',
-        component: () => import('../views/Outbound.vue'),
+        component: () => import(/* @vite-ignore */ '../views/Outbound.vue'),
         meta: { title: '出库管理' }
       },
       {
         path: 'monitoring',
         name: 'Monitoring',
-        component: () => import('../views/Monitoring.vue'),
+        component: () => import(/* @vite-ignore */ '../views/Monitoring.vue'),
         meta: { title: '监控系统' }
       }
     ]
