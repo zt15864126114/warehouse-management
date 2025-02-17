@@ -6,13 +6,13 @@ import { store, fixedData } from '../store'
 const routes = [
   {
     path: '/',
-    component: () => import('../views/Layout.vue'),
+    component: () => import(/* @vite-ignore */ '../views/Layout.vue'),
     redirect: '/welcome',
     children: [
       {
         path: 'welcome',
         name: 'Welcome',
-        component: () => import('../views/Welcome.vue'),
+        component: () => import(/* @vite-ignore */ '../views/Welcome.vue'),
         meta: { title: '欢迎' }
       },
       {

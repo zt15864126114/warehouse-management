@@ -751,12 +751,7 @@ const store = {
   // 初始化所有数据
   async initializeData() {
     try {
-      // 检查是否已有数据
-      if (this.state.inventory.list.length > 0) {
-        return true
-      }
-
-      // 使用固定数据初始化
+      // 直接使用固定数据，不进行 API 请求
       this.setDashboardData(fixedData.dashboard)
       this.setInventoryData(fixedData.inventory.list, fixedData.inventory.total)
       this.setInboundData(fixedData.inbound.list, fixedData.inbound.total)

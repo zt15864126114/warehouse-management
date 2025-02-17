@@ -15,7 +15,10 @@ export default defineConfig({
           'echarts': ['echarts']
         }
       }
-    }
+    },
+    assetsDir: 'assets',
+    chunkSizeWarningLimit: 1500,
+    cssCodeSplit: true
   }
 }) 
  
