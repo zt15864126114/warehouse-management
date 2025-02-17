@@ -9,11 +9,18 @@ import { mockXHR } from './mock'
 import { store } from './store'
 
 // 配置 axios 默认值
-axios.defaults.baseURL = '/'
+axios.defaults.baseURL = import.meta.env.PROD 
+  ? '/warehouse-management' 
+  : '/'
 axios.defaults.timeout = 5000
 
 // 开发环境下使用 Mock
 if (process.env.NODE_ENV === 'development') {
+  mockXHR()
+}
+
+// 生产环境下也使用 Mock
+if (import.meta.env.PROD) {
   mockXHR()
 }
 

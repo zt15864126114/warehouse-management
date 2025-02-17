@@ -6,6 +6,16 @@ export default defineConfig({
   base: '/warehouse-management/',
   server: {
     port: 3000
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'element-plus': ['element-plus'],
+          'echarts': ['echarts']
+        }
+      }
+    }
   }
 }) 
  
