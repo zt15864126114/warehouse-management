@@ -239,8 +239,47 @@ const getStatusType = (status) => {
 
 // 搜索
 const handleSearch = () => {
-  currentPage.value = 1 // 重置到第一页
-  getCurrentPageData() // 改为直接调用 getCurrentPageData
+  const keyword = searchForm.value.keyword.toLowerCase()
+  const status = searchForm.value.status
+  
+  // 过滤原始数据
+  const filteredData = rawData.value.filter(item => {
+    const matchKeyword = !keyword || 
+      item.productName.toLowerCase().includes(keyword) || 
+      item.orderNo.toLowerCase().includes(keyword)
+    const matchStatus = !status || item.status === status
+    return matchKeyword && matchStatus
+  })
+  
+  // 更新总数和过滤后的数据
+  total.value = filteredData.length
+  
+  // 重置页码
+  currentPage.value = 1
+  
+  // 更新表格数据
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  tableData.value = filteredData.slice(start, end)
+}
+
+// 获取当前页数据
+const getCurrentPageData = () => {
+  // 使用当前搜索条件重新过滤数据
+  const keyword = searchForm.value.keyword.toLowerCase()
+  const status = searchForm.value.status
+  
+  const filteredData = rawData.value.filter(item => {
+    const matchKeyword = !keyword || 
+      item.productName.toLowerCase().includes(keyword) || 
+      item.orderNo.toLowerCase().includes(keyword)
+    const matchStatus = !status || item.status === status
+    return matchKeyword && matchStatus
+  })
+  
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  tableData.value = filteredData.slice(start, end)
 }
 
 // 新增
@@ -253,32 +292,6 @@ const handleAdd = () => {
     operator: '管理员'
   }
   dialogVisible.value = true
-}
-
-// 获取当前页数据
-const getCurrentPageData = () => {
-  if (!rawData.value.length) return
-  
-  // 先处理搜索过滤
-  let filteredData = rawData.value
-  if (searchForm.value.keyword || searchForm.value.status) {
-    filteredData = rawData.value.filter(item => {
-      const matchKeyword = !searchForm.value.keyword || 
-        item.productName.toLowerCase().includes(searchForm.value.keyword.toLowerCase()) ||
-        item.orderNo.toLowerCase().includes(searchForm.value.keyword.toLowerCase())
-      const matchStatus = !searchForm.value.status || 
-        item.status === searchForm.value.status
-      return matchKeyword && matchStatus
-    })
-  }
-
-  // 更新总数
-  total.value = filteredData.length
-  
-  // 处理分页
-  const start = (currentPage.value - 1) * pageSize.value
-  const end = start + pageSize.value
-  tableData.value = filteredData.slice(start, end)
 }
 
 // 确认入库
@@ -415,10 +428,10 @@ const handleCurrentChange = (val) => {
   getCurrentPageData() // 改为直接调用 getCurrentPageData
 }
 
-// 监听搜索表单变化
+// 监听搜索条件变化
 watch([() => searchForm.value.keyword, () => searchForm.value.status], () => {
   handleSearch()
-})
+}, { immediate: true })
 
 // 组件被激活时重新获取数据
 onActivated(() => {

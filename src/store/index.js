@@ -645,9 +645,129 @@ const fixedData = {
         operator: '李强',
         status: '待出库',
         createTime: '2024-02-17 13:30:00'
+      },
+      {
+        id: 9,
+        orderNo: 'OUT202402170009',
+        productName: 'Apple Watch Ultra 2 钛金属',
+        category: '电子产品',
+        quantity: 35,
+        operator: '陈明',
+        status: '已出库',
+        createTime: '2024-02-17 13:00:00'
+      },
+      {
+        id: 10,
+        orderNo: 'OUT202402170010',
+        productName: 'Dyson V15 Detect Absolute',
+        category: '家电',
+        quantity: 45,
+        operator: '刘婷',
+        status: '待出库',
+        createTime: '2024-02-17 12:30:00'
+      },
+      {
+        id: 11,
+        orderNo: 'OUT202402170011',
+        productName: 'MUJI 无印良品 棉质床品四件套',
+        category: '家居',
+        quantity: 60,
+        operator: '张浩',
+        status: '已出库',
+        createTime: '2024-02-17 12:00:00'
+      },
+      {
+        id: 12,
+        orderNo: 'OUT202402170012',
+        productName: 'ZARA 春季新款连衣裙',
+        category: '服装',
+        quantity: 80,
+        operator: '王芳',
+        status: '待出库',
+        createTime: '2024-02-17 11:30:00'
+      },
+      {
+        id: 13,
+        orderNo: 'OUT202402170013',
+        productName: '小米电视大师 98英寸',
+        category: '电子产品',
+        quantity: 15,
+        operator: '赵静',
+        status: '已出库',
+        createTime: '2024-02-17 11:00:00'
+      },
+      {
+        id: 14,
+        orderNo: 'OUT202402170014',
+        productName: 'Sony WH-1000XM5 无线降噪耳机',
+        category: '电子产品',
+        quantity: 40,
+        operator: '林涛',
+        status: '待出库',
+        createTime: '2024-02-17 10:30:00'
+      },
+      {
+        id: 15,
+        orderNo: 'OUT202402170015',
+        productName: 'NIKE Air Force 1 Low 白色',
+        category: '服装',
+        quantity: 55,
+        operator: '黄晓',
+        status: '已出库',
+        createTime: '2024-02-17 10:00:00'
+      },
+      {
+        id: 16,
+        orderNo: 'OUT202402170016',
+        productName: 'Apple MacBook Pro 16 M3 Max 2TB',
+        category: '电子产品',
+        quantity: 30,
+        operator: '郑华',
+        status: '待出库',
+        createTime: '2024-02-17 09:30:00'
+      },
+      {
+        id: 17,
+        orderNo: 'OUT202402170017',
+        productName: 'UNIQLO 设计师联名羽绒服',
+        category: '服装',
+        quantity: 65,
+        operator: '孙明',
+        status: '已出库',
+        createTime: '2024-02-17 09:00:00'
+      },
+      {
+        id: 18,
+        orderNo: 'OUT202402170018',
+        productName: '蒙牛特仑苏纯牛奶 250ml*24',
+        category: '食品',
+        quantity: 200,
+        operator: '吴静',
+        status: '待出库',
+        createTime: '2024-02-17 08:30:00'
+      },
+      {
+        id: 19,
+        orderNo: 'OUT202402170019',
+        productName: 'The North Face 1996 Nuptse 羽绒服',
+        category: '服装',
+        quantity: 45,
+        operator: '钱伟',
+        status: '已出库',
+        createTime: '2024-02-17 08:00:00'
+      },
+      {
+        id: 20,
+        orderNo: 'OUT202402170020',
+        productName: 'Apple iPad Pro 12.9 M2 1TB',
+        category: '电子产品',
+        quantity: 25,
+        operator: '周琳',
+        status: '待出库',
+        createTime: '2024-02-17 07:30:00'
       }
     ],
-    total: 8
+    total: 20
   },
   monitoring: {
     cameras: [
