@@ -69,39 +69,40 @@
 
       <!-- 角色权限 -->
       <el-tab-pane label="角色权限" name="roles">
-        <el-card class="tab-card">
-          <template #header>
-            <div class="card-header">
-              <span class="title">角色列表</span>
+        <div class="role-management">
+          <!-- 角色列表 -->
+          <div class="role-list">
+            <div class="role-header">
+              <h3>角色列表</h3>
               <el-button type="primary" @click="handleAddRole">
-                <el-icon><Plus /></el-icon>添加角色
+                <el-icon><Plus /></el-icon>新增角色
               </el-button>
             </div>
-          </template>
-          
-          <el-table :data="roles" border>
-            <el-table-column prop="name" label="角色名称" />
-            <el-table-column prop="description" label="描述" />
-            <el-table-column prop="userCount" label="用户数" />
-            <el-table-column label="权限配置" width="120">
-              <template #default="{ row }">
-                <el-button type="primary" link @click="handleConfigPermissions(row)">
-                  配置权限
-                </el-button>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作" width="200">
-              <template #default="{ row }">
-                <el-button type="primary" link @click="handleEditRole(row)">
-                  编辑
-                </el-button>
-                <el-button type="danger" link @click="handleDeleteRole(row)">
-                  删除
-                </el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-card>
+            <el-table :data="roles" style="width: 100%">
+              <el-table-column prop="name" label="角色名称" />
+              <el-table-column prop="description" label="描述" />
+              <el-table-column prop="users" label="用户数" width="100" />
+              <el-table-column label="操作" width="200">
+                <template #default="{ row }">
+                  <el-button type="primary" link @click="handleEditRole(row)">
+                    编辑
+                  </el-button>
+                  <el-button type="primary" link @click="handleConfigPermissions(row)">
+                    配置权限
+                  </el-button>
+                  <el-button 
+                    type="danger" 
+                    link 
+                    @click="handleDeleteRole(row)"
+                    :disabled="row.isSystem"
+                  >
+                    删除
+                  </el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </div>
+        </div>
       </el-tab-pane>
 
       <!-- 系统配置 -->
@@ -213,11 +214,64 @@
         </div>
       </template>
     </el-dialog>
+
+    <!-- 角色编辑对话框 -->
+    <el-dialog
+      v-model="dialogVisible"
+      :title="dialogType === 'add' ? '新增角色' : '编辑角色'"
+      width="500px"
+    >
+      <el-form ref="roleForm" :model="roleForm" :rules="rules" label-width="80px">
+        <el-form-item label="角色名称" prop="name">
+          <el-input v-model="roleForm.name" placeholder="请输入角色名称" />
+        </el-form-item>
+        <el-form-item label="描述" prop="description">
+          <el-input
+            v-model="roleForm.description"
+            type="textarea"
+            placeholder="请输入角色描述"
+          />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="dialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="handleSubmitRole">确定</el-button>
+        </span>
+      </template>
+    </el-dialog>
+
+    <!-- 权限配置对话框 -->
+    <el-dialog
+      v-model="permissionDialogVisible"
+      title="配置权限"
+      width="600px"
+    >
+      <el-tree
+        ref="rolePermissionTree"
+        :data="permissionList"
+        show-checkbox
+        node-key="id"
+        :default-checked-keys="selectedPermissions"
+        :props="{ 
+          label: 'name',
+          children: 'children'
+        }"
+      />
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="permissionDialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="handleSaveRolePermissions">
+            确定
+          </el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { Search, Plus, Setting } from '@element-plus/icons-vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
@@ -340,19 +394,19 @@ const users = ref([
 // 角色管理
 const roles = ref([
   {
+    id: 1,
     name: '超级管理员',
-    description: '系统最高权限，可以管理所有功能',
-    userCount: 1
+    description: '系统最高权限管理员',
+    users: 1,
+    isSystem: true,
+    permissions: ['all']
   },
   {
-    name: '仓库主管',
-    description: '负责仓库日常运营管理，可以审批和监督',
-    userCount: 3
-  },
-  {
-    name: '普通员工',
-    description: '执行日常仓储操作，包括出入库、盘点等',
-    userCount: 8
+    id: 2,
+    name: '仓库管理员',
+    description: '负责仓库日常管理',
+    users: 3,
+    permissions: ['inventory', 'inbound', 'outbound']
   }
 ])
 
@@ -537,6 +591,138 @@ const submitUser = async () => {
 const saveSystemConfig = () => {
   ElMessage.success('系统配置已保存')
 }
+
+// 角色编辑对话框
+const dialogVisible = ref(false)
+const dialogType = ref('add')
+const currentRole = ref(null)
+
+// 表单数据
+const roleForm = ref({
+  name: '',
+  description: ''
+})
+
+// 表单验证规则
+const rules = {
+  name: [
+    { required: true, message: '请输入角色名称', trigger: 'blur' },
+    { min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur' }
+  ],
+  description: [
+    { required: true, message: '请输入角色描述', trigger: 'blur' },
+    { max: 200, message: '最多200个字符', trigger: 'blur' }
+  ]
+}
+
+// 新增角色
+const handleAddRole = () => {
+  dialogType.value = 'add'
+  roleForm.value = {
+    name: '',
+    description: ''
+  }
+  dialogVisible.value = true
+}
+
+// 编辑角色
+const handleEditRole = (row) => {
+  dialogType.value = 'edit'
+  currentRole.value = row
+  roleForm.value = {
+    name: row.name,
+    description: row.description
+  }
+  dialogVisible.value = true
+}
+
+// 权限配置对话框
+const permissionDialogVisible = ref(false)
+
+// 修改配置权限的处理函数
+const handleConfigPermissions = (row) => {
+  currentRole.value = row
+  // 如果是超级管理员，默认选中所有权限
+  if (row.isSystem) {
+    selectedPermissions.value = getAllPermissionKeys(permissionList.value)
+  } else {
+    selectedPermissions.value = row.permissions || []
+  }
+  permissionDialogVisible.value = true
+}
+
+// 获取所有权限的key
+const getAllPermissionKeys = (permissions) => {
+  const keys = []
+  const traverse = (items) => {
+    items.forEach(item => {
+      keys.push(item.id)
+      if (item.children) {
+        traverse(item.children)
+      }
+    })
+  }
+  traverse(permissions)
+  return keys
+}
+
+// 修改保存角色权限的处理函数
+const handleSaveRolePermissions = () => {
+  if (!currentRole.value || !rolePermissionTree.value) return
+  
+  // 获取选中的节点和半选中的节点
+  const checkedKeys = rolePermissionTree.value.getCheckedKeys()
+  const halfCheckedKeys = rolePermissionTree.value.getHalfCheckedKeys()
+  const allSelectedKeys = [...checkedKeys, ...halfCheckedKeys]
+  
+  const role = roles.value.find(item => item.id === currentRole.value.id)
+  if (role) {
+    role.permissions = allSelectedKeys
+    ElMessage({
+      type: 'success',
+      message: '权限配置已保存',
+      duration: 2000
+    })
+  }
+  permissionDialogVisible.value = false
+}
+
+// 权限树形数据
+const permissionList = ref([
+  {
+    id: 'system',
+    name: '系统管理',
+    children: [
+      { id: 'user', name: '用户管理' },
+      { id: 'role', name: '角色管理' },
+      { id: 'permission', name: '权限管理' }
+    ]
+  },
+  {
+    id: 'warehouse',
+    name: '仓储管理',
+    children: [
+      { id: 'inventory', name: '库存管理' },
+      { id: 'inbound', name: '入库管理' },
+      { id: 'outbound', name: '出库管理' }
+    ]
+  },
+  {
+    id: 'report',
+    name: '报表管理',
+    children: [
+      { id: 'inventory-report', name: '库存报表' },
+      { id: 'operation-report', name: '操作报表' }
+    ]
+  }
+])
+
+// 当前选中的权限
+const selectedPermissions = ref([])
+const defaultCheckedKeys = ref([])
+
+const rolePermissionTree = ref(null)
+const permissionTree = ref(null)
 </script>
 
 <style scoped>
@@ -589,5 +775,76 @@ const saveSystemConfig = () => {
 
 :deep(.el-form-item) {
   margin-bottom: 25px;
+}
+
+.role-management {
+  padding: 20px;
+}
+
+.role-list {
+  margin-bottom: 20px;
+}
+
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.role-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.permission-tree {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+:deep(.el-tree) {
+  background: transparent;
+}
+
+:deep(.el-tree-node__content) {
+  height: 40px;
+}
+
+:deep(.el-tree-node__content:hover) {
+  background: rgba(64, 158, 255, 0.1);
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* 添加权限树的样式 */
+:deep(.el-tree) {
+  margin: 10px 0;
+}
+
+:deep(.el-tree-node__content) {
+  height: 36px;
+}
+
+:deep(.el-tree-node__label) {
+  font-size: 14px;
+}
+
+:deep(.el-tree-node.is-current > .el-tree-node__content) {
+  background-color: #ecf5ff;
+}
+
+/* 权限配置对话框样式 */
+.permission-dialog {
+  .el-dialog__body {
+    padding: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
 }
 </style> 

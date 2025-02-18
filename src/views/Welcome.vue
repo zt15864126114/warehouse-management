@@ -1,5 +1,13 @@
 <template>
-  <div class="welcome animate__animated animate__fadeIn">
+  <div class="welcome animate__animated animate__fadeIn" ref="welcomeRef">
+    <div class="glow-effect" :style="glowPosition"></div>
+    
+    <div class="particles">
+      <div v-for="n in 20" :key="n" class="particle" 
+           :style="{ '--delay': `${Math.random() * 4}s` }">
+      </div>
+    </div>
+
     <!-- 左侧面板 -->
     <div class="left-panel">
       <div class="welcome-header">
@@ -279,6 +287,21 @@ let distributionChart = null
 // 实时数据更新间隔
 let updateTimer = null
 
+// 鼠标跟踪效果
+const welcomeRef = ref(null)
+const glowPosition = ref({ left: '50%', top: '50%' })
+
+const handleMouseMove = (e) => {
+  if (!welcomeRef.value) return
+  const rect = welcomeRef.value.getBoundingClientRect()
+  const x = e.clientX - rect.left
+  const y = e.clientY - rect.top
+  glowPosition.value = {
+    left: `${x}px`,
+    top: `${y}px`
+  }
+}
+
 // 初始化库存变化图表
 const initInventoryChart = () => {
   if (!inventoryChartRef.value) return
@@ -428,12 +451,15 @@ onMounted(() => {
     inventoryChart?.resize()
   })
 
+  document.addEventListener('mousemove', handleMouseMove)
+
   return () => {
     clearInterval(timeTimer)
     clearInterval(updateTimer)
     window.removeEventListener('resize', () => {
       inventoryChart?.resize()
     })
+    document.removeEventListener('mousemove', handleMouseMove)
   }
 })
 
@@ -451,6 +477,8 @@ onUnmounted(() => {
   padding: 24px;
   min-height: calc(100vh - 60px);
   background: #f6f8fa;
+  position: relative;
+  overflow: hidden;
 }
 
 .left-panel {
@@ -502,6 +530,8 @@ onUnmounted(() => {
   cursor: pointer;
   animation: fadeInUp 0.6s ease-out;
   animation-fill-mode: both;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .menu-item:nth-child(1) { animation-delay: 0.2s; }
@@ -510,9 +540,7 @@ onUnmounted(() => {
 .menu-item:nth-child(4) { animation-delay: 0.5s; }
 
 .menu-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  border-color: transparent;
+  transform: translateY(-4px) rotateX(5deg) rotateY(5deg);
 }
 
 .menu-icon {
@@ -525,6 +553,21 @@ onUnmounted(() => {
   font-size: 24px;
   transition: all 0.3s ease;
   animation: pulse 2s infinite;
+  position: relative;
+}
+
+.menu-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-item:hover .menu-icon::before {
+  opacity: 0.6;
 }
 
 .menu-icon.blue-gradient {
@@ -598,6 +641,8 @@ onUnmounted(() => {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   animation: slideIn 0.6s ease-out;
   animation-fill-mode: both;
+  position: relative;
+  overflow: hidden;
 }
 
 .stat-card:nth-child(1) { animation-delay: 0.1s; }
@@ -657,6 +702,7 @@ onUnmounted(() => {
 .chart-card {
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  position: relative;
 }
 
 .card-header {
@@ -749,6 +795,7 @@ onUnmounted(() => {
   transition: background-color 0.3s ease;
   animation: fadeInRight 0.5s ease-out;
   animation-fill-mode: both;
+  position: relative;
 }
 
 .activity-item:nth-child(1) { animation-delay: 0.3s; }
@@ -758,6 +805,22 @@ onUnmounted(() => {
 
 .activity-item:hover {
   background: #f6f8fa;
+}
+
+.activity-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 2px;
+  height: 0;
+  background: currentColor;
+  transition: height 0.3s ease;
+  transform: translateY(-50%);
+}
+
+.activity-item:hover::before {
+  height: 70%;
 }
 
 .activity-icon {
@@ -886,102 +949,105 @@ onUnmounted(() => {
   }
 }
 
-/* 悬停效果增强 */
-.menu-item {
-  position: relative;
-  overflow: hidden;
+/* 鼠标跟踪发光效果 */
+.glow-effect {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle at center,
+    rgba(66, 133, 244, 0.05) 0%,
+    rgba(66, 133, 244, 0.02) 30%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: 0.2s ease-out;
+  z-index: 0;
 }
 
-.menu-item::after {
-  content: '';
-  position: absolute;
+/* 粒子动画效果 */
+.particles {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transform: translateX(-100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.menu-item:hover::after {
-  animation: shine 0.8s ease-out;
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(66, 133, 244, 0.2);
+  border-radius: 50%;
+  animation: float 4s infinite;
+  animation-delay: var(--delay);
 }
 
-@keyframes shine {
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
   100% {
-    transform: translateX(100%);
+    transform: translate(
+      calc(100px * (random(100) - 50) / 50),
+      calc(100px * (random(100) - 50) / 50)
+    );
+    opacity: 0;
   }
 }
 
-/* 活动图标旋转效果 */
-.activity-item:hover .activity-icon {
-  transform: rotate(360deg);
-}
-
-/* 系统状态进度条动画 */
+/* 系统状态进度条动画增强 */
 :deep(.el-progress-bar__inner) {
-  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-stripes 1s linear infinite;
 }
 
-/* 卡片阴影动画 */
-.stat-card,
-.menu-item,
-.chart-card,
-.system-status {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+@keyframes progress-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
 }
 
-.stat-card:hover,
-.chart-card:hover,
-.system-status:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* 趋势图标颜色过渡 */
-.trend.up,
-.trend.down {
-  transition: color 0.3s ease;
-}
-
-.trend.up:hover { color: #389e0d; }
-.trend.down:hover { color: #cf1322; }
-
-/* 添加加载动画 */
-.loading-overlay {
+/* 图表区域动画增强 */
+.chart-card::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 60%
+  );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
 }
 
-.loading-overlay.active {
+.chart-card:hover::after {
   opacity: 1;
-}
-
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #409eff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 </style> 
