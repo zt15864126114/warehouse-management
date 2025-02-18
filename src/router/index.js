@@ -11,6 +11,8 @@ import Inventory from '../views/Inventory.vue'
 import Inbound from '../views/Inbound.vue'
 import Outbound from '../views/Outbound.vue'
 import Monitoring from '../views/Monitoring.vue'
+import Access from '../views/Access.vue'
+import SystemSettings from '../views/SystemSettings.vue'
 
 const routes = [
   {
@@ -53,6 +55,18 @@ const routes = [
         name: 'Monitoring',
         component: Monitoring,
         meta: { title: '监控系统' }
+      },
+      {
+        path: 'access',
+        name: 'Access',
+        component: Access,
+        meta: { title: '门禁管理' }
+      },
+      {
+        path: 'settings',
+        name: 'SystemSettings',
+        component: SystemSettings,
+        meta: { title: '系统管理' }
       }
     ]
   }

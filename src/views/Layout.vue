@@ -42,6 +42,14 @@
           <el-icon><VideoCamera /></el-icon>
           <span>监控系统</span>
         </el-menu-item>
+        <el-menu-item index="/access">
+          <el-icon><Key /></el-icon>
+          <span>门禁管理</span>
+        </el-menu-item>
+        <el-menu-item index="/settings">
+          <el-icon><Setting /></el-icon>
+          <span>系统管理</span>
+        </el-menu-item>
       </el-menu>
     </el-aside>
     
@@ -101,7 +109,7 @@ import { ref, provide } from 'vue'
 import { useRoute } from 'vue-router'
 import { 
   DataLine, Box, Download, Upload, VideoCamera, ArrowDown,
-  Fold, Expand, Bell, User, Setting, SwitchButton, HomeFilled
+  Fold, Expand, Bell, User, Setting, SwitchButton, HomeFilled, Key
 } from '@element-plus/icons-vue'
 
 const route = useRoute()
