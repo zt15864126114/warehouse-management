@@ -152,7 +152,7 @@ const fixedData = {
         content: '原料区高架库A1-03-02库位使用率达到95%，请及时调整',
         level: '警告',
         location: 'A1-03-02',
-        time: '2024-02-17 14:30:00',
+        time: '2025-02-17 14:30:00',
         type: '容量预警',
         count: 5
       },
@@ -162,7 +162,7 @@ const fixedData = {
         content: '1号冷库B2区温度上升至8.5℃，超出标准范围(2-6℃)',
         level: '严重',
         location: 'B2-01-01',
-        time: '2024-02-17 14:15:00',
+        time: '2025-02-17 14:15:00',
         type: '温度异常',
         count: 3
       },
@@ -172,7 +172,7 @@ const fixedData = {
         content: '叉车主通道C1区检测到障碍物，影响通行安全',
         level: '警告',
         location: 'C1-过道-01',
-        time: '2024-02-17 14:00:00',
+        time: '2025-02-17 14:00:00',
         type: '安全隐患',
         count: 2
       },
@@ -182,7 +182,7 @@ const fixedData = {
         content: 'A2区输送带传感器异常，需要维护',
         level: '严重',
         location: 'A2-输送-02',
-        time: '2024-02-17 13:30:00',
+        time: '2025-02-17 13:30:00',
         type: '设备故障',
         count: 4
       },
@@ -192,7 +192,7 @@ const fixedData = {
         content: 'D2区临时存放区已超过48小时未处理',
         level: '警告',
         location: 'D2-暂存-03',
-        time: '2024-02-17 13:45:00',
+        time: '2025-02-17 13:45:00',
         type: '货物积压',
         count: 3
       }
@@ -209,13 +209,13 @@ const fixedData = {
         { name: '货物积压', value: 3 }
       ],
       trend: [
-        { date: '2024-02-11', severe: 2, warning: 1 },
-        { date: '2024-02-12', severe: 1, warning: 2 },
-        { date: '2024-02-13', severe: 0, warning: 3 },
-        { date: '2024-02-14', severe: 1, warning: 1 },
-        { date: '2024-02-15', severe: 2, warning: 1 },
-        { date: '2024-02-16', severe: 0, warning: 1 },
-        { date: '2024-02-17', severe: 1, warning: 1 }
+        { date: '2025-02-11', severe: 2, warning: 1 },
+        { date: '2025-02-12', severe: 1, warning: 2 },
+        { date: '2025-02-13', severe: 0, warning: 3 },
+        { date: '2025-02-14', severe: 1, warning: 1 },
+        { date: '2025-02-15', severe: 2, warning: 1 },
+        { date: '2025-02-16', severe: 0, warning: 1 },
+        { date: '2025-02-17', severe: 1, warning: 1 }
       ]
     }
   },
@@ -231,7 +231,7 @@ const fixedData = {
         quantity: 500,
         price: 14999.00,
         status: '正常',
-        createTime: '2024-02-01 10:00:00'
+        createTime: '2025-02-01 10:00:00'
       },
       {
         id: 2,
@@ -242,7 +242,7 @@ const fixedData = {
         quantity: 200,
         price: 29999.00,
         status: '正常',
-        createTime: '2024-02-01 10:30:00'
+        createTime: '2025-02-01 10:30:00'
       },
       {
         id: 3,
@@ -253,7 +253,7 @@ const fixedData = {
         quantity: 800,
         price: 8999.00,
         status: '正常',
-        createTime: '2024-02-01 11:00:00'
+        createTime: '2025-02-01 11:00:00'
       },
       {
         id: 4,
@@ -264,7 +264,7 @@ const fixedData = {
         quantity: 600,
         price: 7299.00,
         status: '正常',
-        createTime: '2024-02-01 11:30:00'
+        createTime: '2025-02-01 11:30:00'
       },
       {
         id: 5,
@@ -275,7 +275,7 @@ const fixedData = {
         quantity: 400,
         price: 6999.00,
         status: '正常',
-        createTime: '2024-02-01 12:00:00'
+        createTime: '2025-02-01 12:00:00'
       },
       // 服装
       {
@@ -287,7 +287,7 @@ const fixedData = {
         quantity: 1000,
         price: 1599.00,
         status: '正常',
-        createTime: '2024-02-01 13:00:00'
+        createTime: '2025-02-01 13:00:00'
       },
       {
         id: 7,
@@ -298,7 +298,7 @@ const fixedData = {
         quantity: 2000,
         price: 1999.00,
         status: '正常',
-        createTime: '2024-02-01 13:30:00'
+        createTime: '2025-02-01 13:30:00'
       },
       {
         id: 8,
@@ -309,7 +309,7 @@ const fixedData = {
         quantity: 800,
         price: 2499.00,
         status: '正常',
-        createTime: '2024-02-01 14:00:00'
+        createTime: '2025-02-01 14:00:00'
       },
       {
         id: 9,
@@ -320,7 +320,7 @@ const fixedData = {
         quantity: 500,
         price: 4999.00,
         status: '正常',
-        createTime: '2024-02-01 14:30:00'
+        createTime: '2025-02-01 14:30:00'
       },
       {
         id: 10,
@@ -331,7 +331,7 @@ const fixedData = {
         quantity: 1200,
         price: 1299.00,
         status: '正常',
-        createTime: '2024-02-01 15:00:00'
+        createTime: '2025-02-01 15:00:00'
       },
       // 食品
       {
@@ -343,7 +343,7 @@ const fixedData = {
         quantity: 5000,
         price: 139.90,
         status: '正常',
-        createTime: '2024-02-01 15:30:00'
+        createTime: '2025-02-01 15:30:00'
       },
       {
         id: 12,
@@ -354,7 +354,7 @@ const fixedData = {
         quantity: 3000,
         price: 199.90,
         status: '正常',
-        createTime: '2024-02-01 16:00:00'
+        createTime: '2025-02-01 16:00:00'
       }
     ],
     total: 12
@@ -369,7 +369,7 @@ const fixedData = {
         quantity: 100,
         operator: '李明',
         status: '已入库',
-        createTime: '2024-02-17 09:00:00'
+        createTime: '2025-02-17 09:00:00'
       },
       {
         id: 2,
@@ -379,7 +379,7 @@ const fixedData = {
         quantity: 50,
         operator: '王芳',
         status: '待入库',
-        createTime: '2024-02-17 09:30:00'
+        createTime: '2025-02-17 09:30:00'
       },
       {
         id: 3,
@@ -389,7 +389,7 @@ const fixedData = {
         quantity: 200,
         operator: '张伟',
         status: '已入库',
-        createTime: '2024-02-17 10:00:00'
+        createTime: '2025-02-17 10:00:00'
       },
       {
         id: 4,
@@ -399,7 +399,7 @@ const fixedData = {
         quantity: 500,
         operator: '刘洋',
         status: '待入库',
-        createTime: '2024-02-17 10:30:00'
+        createTime: '2025-02-17 10:30:00'
       },
       {
         id: 5,
@@ -409,7 +409,7 @@ const fixedData = {
         quantity: 1000,
         operator: '陈静',
         status: '已入库',
-        createTime: '2024-02-17 11:00:00'
+        createTime: '2025-02-17 11:00:00'
       },
       {
         id: 6,
@@ -419,7 +419,7 @@ const fixedData = {
         quantity: 300,
         operator: '赵鑫',
         status: '待入库',
-        createTime: '2024-02-17 11:30:00'
+        createTime: '2025-02-17 11:30:00'
       },
       {
         id: 7,
@@ -429,7 +429,7 @@ const fixedData = {
         quantity: 150,
         operator: '孙丽',
         status: '已入库',
-        createTime: '2024-02-17 13:00:00'
+        createTime: '2025-02-17 13:00:00'
       },
       {
         id: 8,
@@ -439,7 +439,7 @@ const fixedData = {
         quantity: 100,
         operator: '周强',
         status: '待入库',
-        createTime: '2024-02-17 13:30:00'
+        createTime: '2025-02-17 13:30:00'
       },
       {
         id: 9,
@@ -449,7 +449,7 @@ const fixedData = {
         quantity: 500,
         operator: '刘洋',
         status: '待入库',
-        createTime: '2024-02-17 10:30:00'
+        createTime: '2025-02-17 10:30:00'
       },
       {
         id: 10,
@@ -459,7 +459,7 @@ const fixedData = {
         quantity: 200,
         operator: '周国栋',
         status: '已入库',
-        createTime: '2024-02-17 10:00:00'
+        createTime: '2025-02-17 10:00:00'
       },
       {
         id: 11,
@@ -469,7 +469,7 @@ const fixedData = {
         quantity: 150,
         operator: '王丽',
         status: '待入库',
-        createTime: '2024-02-17 09:30:00'
+        createTime: '2025-02-17 09:30:00'
       },
       {
         id: 12,
@@ -479,7 +479,7 @@ const fixedData = {
         quantity: 300,
         operator: '张明',
         status: '已入库',
-        createTime: '2024-02-17 09:00:00'
+        createTime: '2025-02-17 09:00:00'
       },
       {
         id: 13,
@@ -489,7 +489,7 @@ const fixedData = {
         quantity: 250,
         operator: '李芳',
         status: '待入库',
-        createTime: '2024-02-17 08:30:00'
+        createTime: '2025-02-17 08:30:00'
       },
       {
         id: 14,
@@ -499,7 +499,7 @@ const fixedData = {
         quantity: 400,
         operator: '赵伟',
         status: '已入库',
-        createTime: '2024-02-17 08:00:00'
+        createTime: '2025-02-17 08:00:00'
       },
       {
         id: 15,
@@ -509,7 +509,7 @@ const fixedData = {
         quantity: 180,
         operator: '陈晓',
         status: '已入库',
-        createTime: '2024-02-17 07:30:00'
+        createTime: '2025-02-17 07:30:00'
       },
       {
         id: 16,
@@ -519,7 +519,7 @@ const fixedData = {
         quantity: 50,
         operator: '吴涛',
         status: '待入库',
-        createTime: '2024-02-17 07:00:00'
+        createTime: '2025-02-17 07:00:00'
       },
       {
         id: 17,
@@ -529,7 +529,7 @@ const fixedData = {
         quantity: 200,
         operator: '林婷',
         status: '已入库',
-        createTime: '2024-02-17 06:30:00'
+        createTime: '2025-02-17 06:30:00'
       },
       {
         id: 18,
@@ -539,7 +539,7 @@ const fixedData = {
         quantity: 300,
         operator: '郭静',
         status: '待入库',
-        createTime: '2024-02-17 06:00:00'
+        createTime: '2025-02-17 06:00:00'
       },
       {
         id: 19,
@@ -549,7 +549,7 @@ const fixedData = {
         quantity: 150,
         operator: '黄磊',
         status: '已入库',
-        createTime: '2024-02-17 05:30:00'
+        createTime: '2025-02-17 05:30:00'
       },
       {
         id: 20,
@@ -559,7 +559,7 @@ const fixedData = {
         quantity: 400,
         operator: '韩雪',
         status: '待入库',
-        createTime: '2024-02-17 05:00:00'
+        createTime: '2025-02-17 05:00:00'
       }
     ],
     total: 20
@@ -574,7 +574,7 @@ const fixedData = {
         quantity: 20,
         operator: '赵晓',
         status: '已出库',
-        createTime: '2024-02-17 09:00:00'
+        createTime: '2025-02-17 09:00:00'
       },
       {
         id: 2,
@@ -584,7 +584,7 @@ const fixedData = {
         quantity: 15,
         operator: '孙磊',
         status: '待出库',
-        createTime: '2024-02-17 09:30:00'
+        createTime: '2025-02-17 09:30:00'
       },
       {
         id: 3,
@@ -594,7 +594,7 @@ const fixedData = {
         quantity: 50,
         operator: '周婷',
         status: '已出库',
-        createTime: '2024-02-17 10:00:00'
+        createTime: '2025-02-17 10:00:00'
       },
       {
         id: 4,
@@ -604,7 +604,7 @@ const fixedData = {
         quantity: 100,
         operator: '吴强',
         status: '待出库',
-        createTime: '2024-02-17 10:30:00'
+        createTime: '2025-02-17 10:30:00'
       },
       {
         id: 5,
@@ -614,7 +614,7 @@ const fixedData = {
         quantity: 200,
         operator: '郑阳',
         status: '已出库',
-        createTime: '2024-02-17 11:00:00'
+        createTime: '2025-02-17 11:00:00'
       },
       {
         id: 6,
@@ -624,7 +624,7 @@ const fixedData = {
         quantity: 80,
         operator: '王磊',
         status: '待出库',
-        createTime: '2024-02-17 11:30:00'
+        createTime: '2025-02-17 11:30:00'
       },
       {
         id: 7,
@@ -634,7 +634,7 @@ const fixedData = {
         quantity: 30,
         operator: '张婷',
         status: '已出库',
-        createTime: '2024-02-17 13:00:00'
+        createTime: '2025-02-17 13:00:00'
       },
       {
         id: 8,
@@ -644,7 +644,7 @@ const fixedData = {
         quantity: 25,
         operator: '李强',
         status: '待出库',
-        createTime: '2024-02-17 13:30:00'
+        createTime: '2025-02-17 13:30:00'
       },
       {
         id: 9,
@@ -654,7 +654,7 @@ const fixedData = {
         quantity: 35,
         operator: '陈明',
         status: '已出库',
-        createTime: '2024-02-17 13:00:00'
+        createTime: '2025-02-17 13:00:00'
       },
       {
         id: 10,
@@ -664,7 +664,7 @@ const fixedData = {
         quantity: 45,
         operator: '刘婷',
         status: '待出库',
-        createTime: '2024-02-17 12:30:00'
+        createTime: '2025-02-17 12:30:00'
       },
       {
         id: 11,
@@ -674,7 +674,7 @@ const fixedData = {
         quantity: 60,
         operator: '张浩',
         status: '已出库',
-        createTime: '2024-02-17 12:00:00'
+        createTime: '2025-02-17 12:00:00'
       },
       {
         id: 12,
@@ -684,7 +684,7 @@ const fixedData = {
         quantity: 80,
         operator: '王芳',
         status: '待出库',
-        createTime: '2024-02-17 11:30:00'
+        createTime: '2025-02-17 11:30:00'
       },
       {
         id: 13,
@@ -694,7 +694,7 @@ const fixedData = {
         quantity: 15,
         operator: '赵静',
         status: '已出库',
-        createTime: '2024-02-17 11:00:00'
+        createTime: '2025-02-17 11:00:00'
       },
       {
         id: 14,
@@ -704,7 +704,7 @@ const fixedData = {
         quantity: 40,
         operator: '林涛',
         status: '待出库',
-        createTime: '2024-02-17 10:30:00'
+        createTime: '2025-02-17 10:30:00'
       },
       {
         id: 15,
@@ -714,7 +714,7 @@ const fixedData = {
         quantity: 55,
         operator: '黄晓',
         status: '已出库',
-        createTime: '2024-02-17 10:00:00'
+        createTime: '2025-02-17 10:00:00'
       },
       {
         id: 16,
@@ -724,7 +724,7 @@ const fixedData = {
         quantity: 30,
         operator: '郑华',
         status: '待出库',
-        createTime: '2024-02-17 09:30:00'
+        createTime: '2025-02-17 09:30:00'
       },
       {
         id: 17,
@@ -734,7 +734,7 @@ const fixedData = {
         quantity: 65,
         operator: '孙明',
         status: '已出库',
-        createTime: '2024-02-17 09:00:00'
+        createTime: '2025-02-17 09:00:00'
       },
       {
         id: 18,
@@ -744,7 +744,7 @@ const fixedData = {
         quantity: 200,
         operator: '吴静',
         status: '待出库',
-        createTime: '2024-02-17 08:30:00'
+        createTime: '2025-02-17 08:30:00'
       },
       {
         id: 19,
@@ -754,7 +754,7 @@ const fixedData = {
         quantity: 45,
         operator: '钱伟',
         status: '已出库',
-        createTime: '2024-02-17 08:00:00'
+        createTime: '2025-02-17 08:00:00'
       },
       {
         id: 20,
@@ -764,7 +764,7 @@ const fixedData = {
         quantity: 25,
         operator: '周琳',
         status: '待出库',
-        createTime: '2024-02-17 07:30:00'
+        createTime: '2025-02-17 07:30:00'
       }
     ],
     total: 20
@@ -777,7 +777,7 @@ const fixedData = {
         location: '原料区-高架库A区',
         status: '在线',
         type: '海康威视球机',
-        lastMaintenance: '2024-01-15'
+        lastMaintenance: '2025-01-15'
       },
       {
         id: 2,
@@ -785,7 +785,7 @@ const fixedData = {
         location: '成品区-平库B区',
         status: '在线',
         type: '大华枪机',
-        lastMaintenance: '2024-01-20'
+        lastMaintenance: '2025-01-20'
       },
       {
         id: 3,
@@ -793,7 +793,7 @@ const fixedData = {
         location: '包装区-自动化线',
         status: '离线',
         type: '海康威视球机',
-        lastMaintenance: '2024-02-01'
+        lastMaintenance: '2025-02-01'
       },
       {
         id: 4,
@@ -801,7 +801,7 @@ const fixedData = {
         location: '装卸区-月台',
         status: '在线',
         type: '大华枪机',
-        lastMaintenance: '2024-02-05'
+        lastMaintenance: '2025-02-05'
       },
       {
         id: 5,
@@ -809,7 +809,7 @@ const fixedData = {
         location: '周转区-暂存区',
         status: '在线',
         type: '海康威视球机',
-        lastMaintenance: '2024-02-10'
+        lastMaintenance: '2025-02-10'
       },
       {
         id: 6,
@@ -817,7 +817,7 @@ const fixedData = {
         location: '危险品区-专用库',
         status: '在线',
         type: '大华枪机',
-        lastMaintenance: '2024-02-15'
+        lastMaintenance: '2025-02-15'
       }
     ],
     alarms: [
@@ -827,7 +827,7 @@ const fixedData = {
         content: '原料区高架库A1-03-02库位使用率达到95%，请及时调整',
         level: '警告',
         location: 'A1-03-02',
-        time: '2024-02-17 14:30:00',
+        time: '2025-02-17 14:30:00',
         type: '容量预警',
         count: 5
       },
@@ -837,7 +837,7 @@ const fixedData = {
         content: '1号冷库B2区温度上升至8.5℃，超出标准范围(2-6℃)',
         level: '严重',
         location: 'B2-01-01',
-        time: '2024-02-17 14:15:00',
+        time: '2025-02-17 14:15:00',
         type: '温度异常',
         count: 3
       },
@@ -847,7 +847,7 @@ const fixedData = {
         content: '叉车主通道C1区检测到障碍物，影响通行安全',
         level: '警告',
         location: 'C1-过道-01',
-        time: '2024-02-17 14:00:00',
+        time: '2025-02-17 14:00:00',
         type: '安全隐患',
         count: 2
       },
@@ -857,7 +857,7 @@ const fixedData = {
         content: 'A2区输送带传感器异常，需要维护',
         level: '严重',
         location: 'A2-输送-02',
-        time: '2024-02-17 13:30:00',
+        time: '2025-02-17 13:30:00',
         type: '设备故障',
         count: 4
       },
@@ -867,7 +867,7 @@ const fixedData = {
         content: 'D2区临时存放区已超过48小时未处理',
         level: '警告',
         location: 'D2-暂存-03',
-        time: '2024-02-17 13:45:00',
+        time: '2025-02-17 13:45:00',
         type: '货物积压',
         count: 3
       },
@@ -877,7 +877,7 @@ const fixedData = {
         content: 'E1区检测到未授权人员进入',
         level: '严重',
         location: 'E1-01-01',
-        time: '2024-02-17 14:45:00',
+        time: '2025-02-17 14:45:00',
         type: '安全预警',
         count: 1
       },
@@ -887,7 +887,7 @@ const fixedData = {
         content: 'F2区相对湿度达到85%，超出标准范围',
         level: '警告',
         location: 'F2-02-03',
-        time: '2024-02-17 15:00:00',
+        time: '2025-02-17 15:00:00',
         type: '环境异常',
         count: 2
       },
@@ -897,7 +897,7 @@ const fixedData = {
         content: 'C1-02摄像头离线，请检查网络连接',
         level: '警告',
         location: 'C1-02',
-        time: '2024-02-17 15:15:00',
+        time: '2025-02-17 15:15:00',
         type: '设备异常',
         count: 1
       }
@@ -915,7 +915,7 @@ const fixedData = {
         area: 'A区',
         staff: '张工',
         status: 'pending',
-        time: '2024-02-18 09:00:00'
+        time: '2025-02-18 09:00:00'
       },
       {
         id: 2,
@@ -923,7 +923,7 @@ const fixedData = {
         area: 'B区',
         staff: '李工',
         status: 'completed',
-        time: '2024-02-17 14:00:00'
+        time: '2025-02-17 14:00:00'
       }
     ],
     maintenanceRecords: [
@@ -933,7 +933,7 @@ const fixedData = {
         type: '定期检查',
         staff: '王工',
         status: 'completed',
-        time: '2024-02-15 10:00:00',
+        time: '2025-02-15 10:00:00',
         notes: '设备运行正常，已完成清洁和校准'
       }
     ],
